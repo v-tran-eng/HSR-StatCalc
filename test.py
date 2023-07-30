@@ -26,7 +26,8 @@ def plot_all_test():
 
 
 def main():
-    singlePlotTest(1)
+    # singlePlotTest(1)
+    plot_all_test()
 
 
 main()

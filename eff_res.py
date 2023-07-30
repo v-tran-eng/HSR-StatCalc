@@ -14,7 +14,7 @@ def effect_P(base_eff, eff_hr, eff_res, debuff_res=0):
     return probability
 
 
-def Pcurve_simple(base_eff, eff_res, debuff_res=0, hr_start=0, hr_stop=1.5):
+def P_simple(base_eff, eff_res, debuff_res=0, hr_start=0, hr_stop=1.5):
     '''
     Calculates probability for all hitrate values specified
     Caps P values to 100%
@@ -32,9 +32,12 @@ def Pcurve_simple(base_eff, eff_res, debuff_res=0, hr_start=0, hr_stop=1.5):
     return P_array_capped, hitrate_array
 
 
-def singlePlot(base_eff, eff_res, debuff_res=0):
+def singlePlot(base_eff, eff_res, **P_kwargs):
+    '''
+    Uses P_simple to plot probability vs EHR for some given parameters
+    '''
 
-    temp_Parray, hr_array = Pcurve_simple(base_eff, eff_res, debuff_res=debuff_res)
+    temp_Parray, hr_array = P_simple(base_eff, eff_res, **P_kwargs)
     scaled_Parray = temp_Parray*100
     scaled_hr_array = hr_array*100
 
